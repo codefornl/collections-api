@@ -9,23 +9,28 @@ import (
 )
 
 func main() {
+	fmt.Println("Setting up server, enabling CORS . . .")
 
 	router := mux.NewRouter()
-	router.HandleFunc("/", controllers.GetServiceIndex).Methods("GET")
-	router.HandleFunc("/collection/{key}", controllers.GetCollection).Methods("GET")
-	router.HandleFunc("/collections", controllers.GetCollections).Methods("GET")
-	router.HandleFunc("/usecase/{key}", controllers.GetUsecase).Methods("GET")
-	router.HandleFunc("/usecases", controllers.GetUsecases).Methods("GET")
+	router.HandleFunc("/", controllers.GetServiceIndex).Methods(http.MethodGet, http.MethodOptions)
+	router.HandleFunc("/collection/{key}", controllers.GetCollection).Methods(http.MethodGet, http.MethodOptions)
+	router.HandleFunc("/cbases/{key}", controllers.GetCollection).Methods(http.MethodGet, http.MethodOptions)
+	router.HandleFunc("/collections", controllers.GetCollections).Methods(http.MethodGet, http.MethodOptions)
+	router.HandleFunc("/cbases", controllers.GetCollections).Methods(http.MethodGet, http.MethodOptions)
+	router.HandleFunc("/usecase/{key}", controllers.GetUsecase).Methods(http.MethodGet, http.MethodOptions)
+	router.HandleFunc("/usecases", controllers.GetUsecases).Methods(http.MethodGet, http.MethodOptions)
+	router.Use(mux.CORSMethodMiddleware(router))
 
 	port := os.Getenv("PORT") //Get port from .env file, we did not specify any port so this should return an empty string when tested locally
 	if port == "" {
 		port = "8000" //localhost
 	}
 
-	fmt.Println(port)
 
-	err := http.ListenAndServe(":"+port, router) //Launch the app, visit localhost:8000/api
+	fmt.Println("Server is ready and is listening at port :" + port +" . . .")
+	err := http.ListenAndServe(":" + port, router) //Launch the app, visit localhost:8000/api
 	if err != nil {
 		fmt.Print(err)
 	}
+
 }

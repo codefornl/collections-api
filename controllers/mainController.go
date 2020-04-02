@@ -4,8 +4,23 @@ import (
 	"encoding/json"
 	"github.com/codefornl/collections-api/models"
 	"net/http"
-	//"github.com/gorilla/mux"
 )
+
+
+// Check for CORS request. This one is essential for Angular to function
+func PreflightCheck(w http.ResponseWriter, r *http.Request) {
+	if origin := r.Header.Get("Origin"); origin != "" {
+        w.Header().Set("Access-Control-Allow-Origin", origin)
+        w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
+        w.Header().Set("Access-Control-Allow-Headers",
+			"Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization")
+		w.Header().Set("Access-Control-Allow-Credentials", "true")
+	}
+	
+    if r.Method == http.MethodOptions {
+        return
+	}
+}
 
 var GetBase = func(r *http.Request) string {
 	scheme := "http"
@@ -50,6 +65,7 @@ var GetUsecasesLinks = func(r *http.Request) models.UsecasesLinks {
 }
 
 var GetServiceIndex = func(w http.ResponseWriter, r *http.Request) {
+	PreflightCheck(w, r)
 	application := GetSelf(r)
 	about := "https://www.codefor.nl/clarity"
 	service := models.Service{
@@ -82,6 +98,7 @@ var GetServiceIndex = func(w http.ResponseWriter, r *http.Request) {
 }
 
 var GetCollection = func(w http.ResponseWriter, r *http.Request) {
+	PreflightCheck(w, r)
 	//vars := mux.Vars(r)
 	//collection := models.GetCollection(vars["key"])
 	w.Header().Add("Content-Type", "application/json")
@@ -89,6 +106,7 @@ var GetCollection = func(w http.ResponseWriter, r *http.Request) {
 }
 
 var GetCollections = func(w http.ResponseWriter, r *http.Request) {
+	PreflightCheck(w, r)
 	collections := models.GetCollections()
 	response := models.Collections{
 		Links: GetCollectionsLinks(r),
@@ -101,6 +119,7 @@ var GetCollections = func(w http.ResponseWriter, r *http.Request) {
 }
 
 var GetUsecase = func(w http.ResponseWriter, r *http.Request) {
+	PreflightCheck(w, r)
 	//vars := mux.Vars(r)
 	//usecase := models.GetUsecase(vars["key"])
 	w.Header().Add("Content-Type", "application/json")
@@ -108,6 +127,7 @@ var GetUsecase = func(w http.ResponseWriter, r *http.Request) {
 }
 
 var GetUsecases = func(w http.ResponseWriter, r *http.Request) {
+	PreflightCheck(w, r)
 	usecases := models.GetUsecases()
 	response := models.Usecases{
 		Links: GetUsecasesLinks(r),
