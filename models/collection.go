@@ -1,9 +1,5 @@
 package models
 
-import (
-	"github.com/jinzhu/gorm"
-)
-
 // CollectionLinks - Singular HAL Links
 type CollectionLinks struct {
 	Self   Link   `json:"self,omitempty"`
@@ -27,8 +23,7 @@ type CollectionsEmbedded struct {
 
 // Collection - Basic ORM, has Singular HAL Response
 type Collection struct {
-	gorm.Model     `json:"-"`
-	ID             string          `json:"id,omitempty"`
+	GormBase
 	Name           string          `json:"name,omitempty"`
 	Slug           string          `json:"slug,omitempty"`
 	AdminName      string          `json:"admin_name,omitempty"`

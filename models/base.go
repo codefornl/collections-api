@@ -2,10 +2,19 @@ package models
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite" // Import the sqlite dialect
 )
+
+// GormBase - Override the gorm.Model so we can hide fields we do not want
+type GormBase struct {
+	ID        uint       `json:"id" gorm:"primary_key"`
+	CreatedAt time.Time  `json:"-"`
+	UpdatedAt time.Time  `json:"-"`
+	DeletedAt *time.Time `json:"-" sql:"index"`
+}
 
 // Link - HAL structure http://stateless.co/hal_specification.html#Links
 type Link struct {
@@ -53,7 +62,7 @@ func init() {
 	}
 
 	db = conn
-	db.Debug().AutoMigrate(&Collection{}, &Usecase{}) //Database migration
+	db.Debug().AutoMigrate(&Category{}, &Collection{}, &Usecase{}, &Type{}, &Initiative{}) //Database migration
 }
 
 // GetDB - returns a handle to the DB object
