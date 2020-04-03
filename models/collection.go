@@ -44,17 +44,3 @@ type Collections struct {
 	Links    CollectionsLinks    `json:"_links,omitempty"`
 	Embedded CollectionsEmbedded `json:"_embedded,omitempty"`
 }
-
-// GetCollection - Singular DB Getter
-func GetCollection(u string) *Collection {
-	collection := &Collection{}
-	GetDB().Find(&collection, 1)
-	return collection
-}
-
-// GetCollections - Plural DB Getter
-func GetCollections() []Collection {
-	collections := []Collection{}
-	GetDB().Find(&collections)
-	return collections
-}

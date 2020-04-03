@@ -15,17 +15,3 @@ type Initiative struct {
 	Location   *Location
 	Contacts   []Contact `gorm:"many2many:initiative_contact;"`
 }
-
-// GetInitiative - Singular DB Getter
-func GetInitiative(u string) Initiative {
-	usecase := Initiative{}
-	GetDB().Find(&usecase, 1)
-	return usecase
-}
-
-// GetInitiatives - Plural DB Getter
-func GetInitiatives() []Initiative {
-	usecases := []Initiative{}
-	GetDB().Find(&usecases)
-	return usecases
-}

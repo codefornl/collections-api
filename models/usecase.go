@@ -46,17 +46,3 @@ type Usecases struct {
 	Links    UsecasesLinks    `json:"_links"`
 	Embedded UsecasesEmbedded `json:"_embedded"`
 }
-
-// GetUsecase - Singular DB Getter
-func GetUsecase(u string) Usecase {
-	usecase := Usecase{}
-	GetDB().Find(&usecase, 1)
-	return usecase
-}
-
-// GetUsecases - Plural DB Getter
-func GetUsecases() []Usecase {
-	usecases := []Usecase{}
-	GetDB().Find(&usecases)
-	return usecases
-}
