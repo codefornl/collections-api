@@ -1,0 +1,1 @@
+We try to follow the governance guidelines from https://opensource.guide/leadership-and-governance/ feel free to tell us what we are doing wrong or how things can be done better. We are open to all feedback.
