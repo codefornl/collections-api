@@ -1,40 +1,46 @@
 package models
 
 import (
-	_ "github.com/jinzhu/gorm/dialects/sqlite"
-	"github.com/jinzhu/gorm"
 	"fmt"
+
+	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/sqlite" // Import the sqlite dialect
 )
 
+// Link - HAL structure http://stateless.co/hal_specification.html#Links
 type Link struct {
 	Href string `json:"href,omitempty"`
 }
 
+// Filter - HAL structure
 type Filter struct {
-	Href string `json:"href,omitempty"`
-	Templated bool `json:"templated,omitempty"`
+	Href      string `json:"href,omitempty"`
+	Templated bool   `json:"templated,omitempty"`
 }
 
+// Cury - HAL structure http://stateless.co/hal_specification.html#CURIEs
 type Cury struct {
-	Href string `json:"href,omitempty"`
-	Name string `json:"name,omitempty"`
-	Templates bool `json:"templates,omitempty"`
+	Href      string `json:"href,omitempty"`
+	Name      string `json:"name,omitempty"`
+	Templates bool   `json:"templates,omitempty"`
 }
 
+// ServiceLinks - Implementation of HAL for the index page
 type ServiceLinks struct {
-	Curies []Cury `json:"curies"`
-	Collections Link `json:"cbases"`
-	Usecases Link `json:"usecases"`
-	Self Link `json:"cfnl:self"`
+	Curies      []Cury `json:"curies"`
+	Collections Link   `json:"cbases"`
+	Usecases    Link   `json:"usecases"`
+	Self        Link   `json:"cfnl:self"`
 }
 
+// Service - Primary Index response for HAL
 type Service struct {
-	Service string `json:"service"`
-	About string `json:"about"`
-	Browser string `json:"browser";gorm:"size:255"`
-	Application string `json:"application";gorm:"size:255"`
-	Codebase string `json:"codebase";gorm:"size:255"`
-	Links ServiceLinks `json:"_links"`
+	Service     string       `json:"service"`
+	About       string       `json:"about"`
+	Browser     string       `json:"browser"`
+	Application string       `json:"application"`
+	Codebase    string       `json:"codebase"`
+	Links       ServiceLinks `json:"_links"`
 }
 
 var db *gorm.DB //database
@@ -47,10 +53,10 @@ func init() {
 	}
 
 	db = conn
-	db.Debug().AutoMigrate(&Collection{},&Usecase{}) //Database migration
+	db.Debug().AutoMigrate(&Collection{}, &Usecase{}) //Database migration
 }
 
-//returns a handle to the DB object
+// GetDB - returns a handle to the DB object
 func GetDB() *gorm.DB {
 	return db
 }
