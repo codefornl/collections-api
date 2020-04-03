@@ -14,3 +14,14 @@ go run main.go
 ```
 
 You can now open your browser at [localhost:8000](http://localhost:8000) to find the HAL endpoint there.
+
+# Issues
+All issues for the collections-api should be registered and processed in the main repository at https://github.com/codefornl/collections-api/issue
+
+- Issues can be opened and are accepted from anyone.
+- Changes to the codebase can be suggested by filing an issue. We accept pull requests.
+
+# Contact
+
+For Details you can contact Milo van der Linden (milo@codefor.nl) although we prefer people to use the issues section to keep all communication transparent.
+    
