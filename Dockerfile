@@ -1,7 +1,7 @@
 FROM golang:1.14.1-alpine
-ENV CGO_ENABLED 0
+ 
 EXPOSE 8000
-RUN apk add --update git; \
+RUN apk add --no-cache --update git gcc musl-dev; \
     mkdir -p ${GOPATH}/src/github.com/codefornl/collections-api; \
     go get -u github.com/gorilla/mux; \
     go get -u github.com/jinzhu/gorm
