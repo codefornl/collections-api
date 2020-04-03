@@ -1,4 +1,6 @@
-# collections-api
+# About
+
+The collections-api is an API to disclose collections of usecases, products and initiatives for presentation on the internet.
 
 * This is an API written in [go (or golang)](https://https://golang.org/).
 * The dependencies are maintained with [dep](https://golang.github.io/dep/), the go dependencies manager.
