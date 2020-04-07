@@ -1,3 +1,4 @@
+travis CI: ![](https://travis-ci.org/codefornl/collections-api.svg?branch=master)
 # About
 
 The collections-api is an API to disclose collections of usecases, products and initiatives for presentation on the internet.
