@@ -8,7 +8,7 @@
 - [X] Document your code
 - [X] use plain English
 - [X] Use open standards - implements [HAL](https://restfulapi.net/hateoas/)
-- [ ] Use continuous integration - setting up travis
+- [X] Use continuous integration - setting up travis
 - [X] Publish with an open license
 - [X] Use a coherent style - using [gofmt](https://golang.org/cmd/gofmt/)
 - [X] Pay attention to codebase maturity
