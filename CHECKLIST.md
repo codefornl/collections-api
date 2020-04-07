@@ -3,7 +3,7 @@
 - [X] Create reusable and portable code
 - [X] Welcome contributions
 - [X] Maintain version control
-- [ ] Require review of contributions
+- [X] Require review of contributions
 - [X] Document your objectives
 - [X] Document your code
 - [X] use plain English
