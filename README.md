@@ -25,7 +25,7 @@ All issues for the collections-api should be registered and processed in the mai
 - Issues can be opened and are accepted from anyone.
 - Changes to the codebase can be suggested by filing an issue. We accept pull requests.
 
-# Licens
+# License
 
 The source code may be used according to our [LICENSE](LICENSE.md)
 
