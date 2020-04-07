@@ -1,0 +1,14 @@
+- [X] Code in the open
+- [ ] Bundle policy and source code - needs work, requires BPMN software
+- [X] Create reusable and portable code
+- [X] Welcome contributions
+- [X] Maintain version control
+- [ ] Require review of contributions
+- [X] Document your objectives
+- [X] Document your code
+- [X] use plain English
+- [X] Use open standards - implements [HAL](https://restfulapi.net/hateoas/)
+- [ ] Use continuous integration - setting up travis
+- [X] Publish with an open license
+- [X] Use a coherent style - using [gofmt](https://golang.org/cmd/gofmt/)
+- [X] Pay attention to codebase maturity
