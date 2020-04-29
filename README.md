@@ -3,7 +3,7 @@
 The collections-api is an API to disclose collections of usecases, products and initiatives for presentation on the internet.
 
 * This is an API written in [go (or golang)](https://https://golang.org/).
-* The dependencies are maintained with [dep](https://golang.github.io/dep/), the go dependencies manager.
+* The dependencies are maintained with [mod](https://blog.golang.org/using-go-modules), the go dependencies manager.
 * The proof of concept is setup with SQLite3 as database, but since [gorm](https://gorm.io) is used, it is possible to use another supported database provider.
 
 # Getting started
