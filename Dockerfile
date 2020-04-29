@@ -7,13 +7,12 @@ ENV DB_NAME = collectionsdb
 
 EXPOSE 8000
 RUN apk add --no-cache --update git gcc musl-dev; \
-    mkdir -p ${GOPATH}/src/github.com/codefornl/collections-api; \
-    go get -u github.com/gorilla/mux; \
-    go get -u github.com/jinzhu/gorm
+    mkdir -p ${GOPATH}/src/github.com/codefornl/collections-api;
+    
 
 WORKDIR ${GOPATH}/src/github.com/codefornl/collections-api
 COPY . ${GOPATH}/src/github.com/codefornl/collections-api
-RUN go build -o collections-api .
+RUN go mod vendor && go build -o collections-api .
 
 FROM alpine:latest
 RUN apk --no-cache add ca-certificates
