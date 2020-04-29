@@ -1,3 +1,9 @@
 language: go
 go:
   - "1.14.1"
+script:
+    - go test -v
+    - go build
+notifications:
+    on_success: never
+    on_failure: never

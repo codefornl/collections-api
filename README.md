@@ -1,3 +1,5 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![](https://travis-ci.org/codefornl/collections-api.svg?branch=master)
+![GitHub repo size](https://img.shields.io/github/repo-size/codefornl/collections-api)
 # About
 
 The collections-api is an API to disclose collections of usecases, products and initiatives for presentation on the internet.
@@ -25,7 +27,7 @@ All issues for the collections-api should be registered and processed in the mai
 - Issues can be opened and are accepted from anyone.
 - Changes to the codebase can be suggested by filing an issue. We accept pull requests.
 
-# Licens
+# License
 
 The source code may be used according to our [LICENSE](LICENSE.md)
 
