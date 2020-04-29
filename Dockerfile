@@ -1,5 +1,10 @@
 FROM golang:1.14.1-alpine
- 
+
+ENV DB_USER = postgres
+ENV DB_PASS = secret
+ENV DB_HOST = localhost
+ENV DB_NAME = collectionsdb
+
 EXPOSE 8000
 RUN apk add --no-cache --update git gcc musl-dev; \
     mkdir -p ${GOPATH}/src/github.com/codefornl/collections-api; \

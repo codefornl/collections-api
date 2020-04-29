@@ -1,0 +1,36 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: collections-api-service
+spec:
+  selector:
+    app: collections-api-service
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: collections-api
+  labels:
+    app: collections-api-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: collections-api-service
+  template:
+    metadata:
+      labels:
+        app: collections-api-service
+    spec:
+      imagePullSecrets:
+      - name: pipeline-docker-registry
+      containers:
+      - name: collections-api-service
+        image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
+        ports:
+        - containerPort: 8000
