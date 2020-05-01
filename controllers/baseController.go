@@ -25,10 +25,15 @@ func PreflightCheck(w http.ResponseWriter, r *http.Request) {
 // GetBase - Get the information on the service host
 var GetBase = func(r *http.Request) string {
 	scheme := "http"
+	path := ""
 	if r.TLS != nil {
 		scheme = "https"
 	}
-	return scheme + "://" + r.Host
+	if r.Header.Get("X-Original-URI") != "" {
+		path = r.Header.Get("X-Original-URI")
+	}
+
+	return scheme + "://" + r.Host + path
 }
 
 // GetSelf - Get information about the request url used
