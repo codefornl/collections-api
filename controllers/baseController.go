@@ -3,6 +3,7 @@ package controllers
 import (
 	"encoding/json"
 	"net/http"
+	"strings"
 
 	"github.com/codefornl/collections-api/models"
 )
@@ -31,6 +32,8 @@ var GetBase = func(r *http.Request) string {
 	}
 	if r.Header.Get("X-Original-URI") != "" {
 		path = r.Header.Get("X-Original-URI")
+		// strip trailing slash
+		path = strings.TrimSuffix(path, "/")
 	}
 
 	return scheme + "://" + r.Host + path
@@ -63,7 +66,7 @@ var GetServiceIndex = func(w http.ResponseWriter, r *http.Request) {
 		About:       about,
 		Links: models.ServiceLinks{
 			Curies: []models.Cury{
-				models.Cury{
+				{
 					Name:      "cfnl",
 					Templates: false,
 					Href:      about,
